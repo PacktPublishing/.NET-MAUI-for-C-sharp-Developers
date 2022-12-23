@@ -10,6 +10,13 @@ class MainPageCS : ContentPage
     HorizontalOptions = LayoutOptions.Center,
   }.SemanticHint("Counts the number of times you click");
 
+  private readonly Label clickCounterLabel = new Label
+    {
+      HorizontalOptions = LayoutOptions.Center,
+      Text = "Click the Button",
+    }.SemanticDescription("Label for counter info")
+    .SemanticHeadingLevel(SemanticHeadingLevel.Level2);
+
 
   public MainPageCS()
   {
@@ -45,6 +52,7 @@ class MainPageCS : ContentPage
                         .SemanticDescription("Welcome to dot net Multi platform App U I"),
 
                     counterBtn,
+                    clickCounterLabel,
                 }
     };
   }
