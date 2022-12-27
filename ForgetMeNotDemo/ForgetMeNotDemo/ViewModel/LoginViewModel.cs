@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ForgetMeNotDemo.ViewModel;
 
@@ -12,23 +12,6 @@ public partial class LoginViewModel
   [ObservableProperty] private string lostPasswordExcuse;
   [ObservableProperty] private bool editorContentVisible = true;
 
- //private bool editorContentVisible = true;
 
- //public bool EditorContentVisible
- //{
- //  get => editorContentVisible;
- //  set
- //  {
- //    editorContentVisible = value;
- //     OnPropertyChanged();
- //   }
- //}
-
- public ICommand EditorCompletedCommand { get; }
-
-  public LoginViewModel()
-  {
-    EditorCompletedCommand = new Command(() => EditorContentVisible = false);
-  }
 
 }
