@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    Title="Login Page"
+    x:Class="ForgetMeNotDemo.View.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <VerticalStackLayout>
+        <HorizontalStackLayout WidthRequest="300">
+            <Label
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                Margin="10,20,10,0"
+                Text="User Name"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+            <Entry
+                HorizontalOptions="End"
+                Placeholder="User Name"
+                Text="{Binding Name}"
+                WidthRequest="150" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout WidthRequest="300">
+            <Label
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                Margin="10,10,10,0"
+                Text="Password"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+            <Entry
+                HorizontalOptions="End"
+                IsPassword="True"
+                Placeholder="Password"
+                Text="{Binding Password}"
+                WidthRequest="150" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Margin="10,10,10,0">
+            <Button
+                BackgroundColor="Gray"
+                Command="{Binding SubmitCommand}"
+                Margin="5"
+                Text="Submit" />
+            <Button
+                BackgroundColor="Gray"
+                Margin="5"
+                Text="Create Account" />
+            <Button
+                BackgroundColor="Gray"
+                Margin="5"
+                Text="Forgot Password" />
+        </HorizontalStackLayout>
+        <Editor
+            FontSize="Small"
+            HeightRequest="300"
+            IsTextPredictionEnabled="True"
+            Margin="10"
+            MaxLength="5"
+            Placeholder="Explain yourself here (up to 500 characters)"
+            PlaceholderColor="Red"
+            Text="{Binding LostPasswordExcuse}"
+            TextColor="Blue"
+            VerticalTextAlignment="Start"
+            x:Name="LoginEditor">
+            <Editor.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    EventName="Completed" 
+                    Command="{Binding EditorCompletedCommand}" />
+            </Editor.Behaviors>
+        </Editor>
+
+        <Label
+            FontSize="Small"
+            IsVisible="{Binding EditorContentVisible}"
+            LineBreakMode="WordWrap"
+            Margin="10"
+            Text="{Binding LostPasswordExcuse}"
+            x:Name="EditorContents" />
+    </VerticalStackLayout>
+</ContentPage>

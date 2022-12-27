@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    BackgroundColor="White"
+    x:Class="ForgetMeNotDemo.View.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label
+                BackgroundColor="Red"
+                FontAttributes="Bold"
+                FontSize="Small"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Margin="20"
+                MaxLines="5"
+                Padding="10"
+                Text="{Binding FullName}"
+                TextColor="Yellow"
+                VerticalTextAlignment="Center"
+                x:Name="HelloLabel">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ImageTappedCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Image
+                HeightRequest="200"
+                HorizontalOptions="Center"
+                IsVisible="{Binding FlowerIsVisible}"
+                Source="{Binding FavoriteFlower}"
+                x:Name="BigFlower">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding ImageTappedCommand}"
+                        NumberOfTapsRequired="2" />
+                </Image.GestureRecognizers>
+            </Image>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

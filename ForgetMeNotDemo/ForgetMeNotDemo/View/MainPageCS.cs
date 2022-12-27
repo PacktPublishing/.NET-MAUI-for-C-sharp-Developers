@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Markup;
 
-namespace ForgetMeNotDemo;
+namespace ForgetMeNotDemo.View;
 
 class MainPageCS : ContentPage
 {
