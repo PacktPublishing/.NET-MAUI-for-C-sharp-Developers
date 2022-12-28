@@ -35,7 +35,40 @@
                 Text="{Binding Password}"
                 WidthRequest="150" />
         </HorizontalStackLayout>
-        <HorizontalStackLayout Margin="10,10,10,0">
+        <BoxView
+            Color="Red"
+            HeightRequest="2"
+            Margin="0,20"
+            WidthRequest="400" />
+        <Frame
+            BorderColor="Blue"
+            CornerRadius="10"
+            HasShadow="True"
+            HeightRequest="100"
+            WidthRequest="100">
+            <Frame.Background>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="Yellow" Offset="0.2" />
+                    <GradientStop Color="Red" Offset="0.1" />
+                </LinearGradientBrush>
+            </Frame.Background>
+        </Frame>
+
+        <Frame
+            BorderColor="Blue"
+            CornerRadius="10"
+            HasShadow="True"
+            HeightRequest="100"
+            WidthRequest="100">
+            <Frame.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Yellow" Offset="0.2" />
+                    <GradientStop Color="Red" Offset="0.1" />
+                </RadialGradientBrush>
+            </Frame.Background>
+        </Frame>
+
+        <HorizontalStackLayout Margin="10,0,10,0">
             <Button
                 BackgroundColor="Gray"
                 Clicked="OnSubmit"
@@ -53,7 +86,10 @@
                 Text="Forgot Password" />
         </HorizontalStackLayout>
         <Label
-            Text="Create account?"
+            Text=""
             x:Name="CreateAccount" />
+        <ActivityIndicator
+            Color="Blue"
+            IsRunning="{Binding ActivityIndicatorIsRunning}" />
     </VerticalStackLayout>
 </ContentPage>

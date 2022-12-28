@@ -14,9 +14,20 @@ public partial class LoginPage : ContentPage
 	public LoginPage()
 	{
 		BindingContext = vm;
-		InitializeComponent();
+    InitializeComponent();
 	}
 
+  //private bool activityIndicatorIsRunning = true;
+
+  //public bool ActivityIndicatorIsRunning
+  //{
+  //  get => activityIndicatorIsRunning;
+  //  set
+  //  {
+  //    activityIndicatorIsRunning = value;
+  //    OnPropertyChanged();
+  //  }
+  //}
   private async void OnSubmit(object sender, EventArgs e)
   {
 
@@ -104,6 +115,7 @@ public partial class LoginPage : ContentPage
 
     await snackbar.Show(cancellationTokenSource.Token);
 
+    vm.ActivityIndicatorIsRunning = false;
   }
 
 

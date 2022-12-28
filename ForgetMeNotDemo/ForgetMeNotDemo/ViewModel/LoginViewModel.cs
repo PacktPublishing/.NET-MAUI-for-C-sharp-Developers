@@ -11,7 +11,7 @@ public partial class LoginViewModel
   [ObservableProperty] private string password;
   [ObservableProperty] private string lostPasswordExcuse;
   [ObservableProperty] private bool editorContentVisible = true;
-
+  [ObservableProperty] private bool activityIndicatorIsRunning = true;
 
 
 }
