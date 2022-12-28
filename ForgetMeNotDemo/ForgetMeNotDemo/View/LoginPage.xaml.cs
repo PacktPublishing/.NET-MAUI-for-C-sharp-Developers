@@ -10,7 +10,10 @@ namespace ForgetMeNotDemo.View;
 
 public partial class LoginPage : ContentPage
 {
-	LoginViewModel vm = new LoginViewModel();
+  private double LoginProgress { get; set; }
+
+
+  LoginViewModel vm = new LoginViewModel();
 	public LoginPage()
 	{
 		BindingContext = vm;
@@ -30,7 +33,10 @@ public partial class LoginPage : ContentPage
   //}
   private async void OnSubmit(object sender, EventArgs e)
   {
-
+    for (double i = 0.0; i < 1.0; i += 0.1)
+    {
+      await LoginProgressBar.ProgressTo(i, 500, Easing.Linear);
+    }
     await DisplayAlert(
       "Submit", 
       $"You entered {vm.Name} and {vm.Password}", 

@@ -88,8 +88,11 @@
         <Label
             Text=""
             x:Name="CreateAccount" />
-        <ActivityIndicator
+        <!--<ActivityIndicator
             Color="Blue"
-            IsRunning="{Binding ActivityIndicatorIsRunning}" />
+            IsRunning="{Binding ActivityIndicatorIsRunning}" />-->
+        <ProgressBar
+            ProgressColor="Blue"
+            x:Name="LoginProgressBar" />
     </VerticalStackLayout>
 </ContentPage>
