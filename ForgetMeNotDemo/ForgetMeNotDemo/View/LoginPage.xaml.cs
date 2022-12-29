@@ -5,8 +5,13 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace ForgetMeNotDemo.View;
+
+public partial class ConstructMessage
+{
+}
 
 public partial class LoginPage : ContentPage
 {
@@ -16,11 +21,56 @@ public partial class LoginPage : ContentPage
   LoginViewModel vm = new LoginViewModel();
 	public LoginPage()
   {
+    //ConstructMessage message = new ConstructMessage();
+    WeakReferenceMessenger.Default.Register<ConstructMessage> (this, async ( m,e) =>
+    {
+
+      CancellationTokenSource cancellationTokenSource =
+        new CancellationTokenSource();
+      var message = "Your account was created";
+      var dismissalText = "Click Here to Close the SnackBar";
+      TimeSpan duration = TimeSpan.FromSeconds(10);
+
+      Action action = async () =>
+        await DisplayAlert(
+          "Snackbar Dismissed!",
+          message,
+          "OK");
+
+      var snackbarOptions = new SnackbarOptions
+      {
+        BackgroundColor = Colors.Red,
+        TextColor = Colors.Yellow,
+        ActionButtonTextColor = Colors.Black,
+        CornerRadius = new CornerRadius(20),
+        Font = Microsoft.Maui.Font.SystemFontOfSize(14),
+        ActionButtonFont = Microsoft.Maui.Font.SystemFontOfSize(14)
+      };
+
+      var snackbar = Snackbar.Make(
+        message,
+        action,
+        dismissalText,
+        duration,
+        snackbarOptions);
+
+      await snackbar.Show(cancellationTokenSource.Token);
+
+      vm.ActivityIndicatorIsRunning = false;
+
+    });
+
+
+
+      
     LoginProgressBar = new ProgressBar();
     InitializeComponent();
     LoginStackLayout.Children.Add(LoginProgressBar);
 		BindingContext = vm;
 	}
+
+  private void ManageActivityIndicator(object sender, ConstructMessage message)
+  {}
 
   //private bool activityIndicatorIsRunning = true;
 

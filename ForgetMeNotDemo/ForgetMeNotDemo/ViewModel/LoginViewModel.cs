@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using ForgetMeNotDemo.View;
 
 namespace ForgetMeNotDemo.ViewModel;
@@ -28,6 +29,13 @@ public partial class LoginViewModel
       "Submit",
       $"You entered {Name} and {Password}",
       "OK");
+
+  }
+
+  [RelayCommand]
+  private void Create()
+  {
+    WeakReferenceMessenger.Default.Send(new ConstructMessage());
 
   }
 }

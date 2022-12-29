@@ -76,7 +76,7 @@
                 Text="Submit" />
             <Button
                 BackgroundColor="Gray"
-                Clicked="OnCreate"
+                Command="{Binding CreateCommand}"
                 Margin="5"
                 Text="Create Account" />
             <Button
