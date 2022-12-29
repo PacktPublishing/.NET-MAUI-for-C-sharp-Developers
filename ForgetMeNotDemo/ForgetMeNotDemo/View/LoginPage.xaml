@@ -5,7 +5,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <VerticalStackLayout>
+    <VerticalStackLayout x:Name="LoginStackLayout">
         <HorizontalStackLayout WidthRequest="300">
             <Label
                 FontSize="Medium"
@@ -71,7 +71,7 @@
         <HorizontalStackLayout Margin="10,0,10,0">
             <Button
                 BackgroundColor="Gray"
-                Clicked="OnSubmit"
+                Command="{Binding SubmitCommand}"
                 Margin="5"
                 Text="Submit" />
             <Button
@@ -91,8 +91,6 @@
         <!--<ActivityIndicator
             Color="Blue"
             IsRunning="{Binding ActivityIndicatorIsRunning}" />-->
-        <ProgressBar
-            ProgressColor="Blue"
-            x:Name="LoginProgressBar" />
+
     </VerticalStackLayout>
 </ContentPage>

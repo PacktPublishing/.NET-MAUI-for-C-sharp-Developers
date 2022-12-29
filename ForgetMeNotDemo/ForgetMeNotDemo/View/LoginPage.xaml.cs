@@ -11,13 +11,15 @@ namespace ForgetMeNotDemo.View;
 public partial class LoginPage : ContentPage
 {
   private double LoginProgress { get; set; }
-
-
+  public static ProgressBar LoginProgressBar;
+  
   LoginViewModel vm = new LoginViewModel();
 	public LoginPage()
-	{
-		BindingContext = vm;
+  {
+    LoginProgressBar = new ProgressBar();
     InitializeComponent();
+    LoginStackLayout.Children.Add(LoginProgressBar);
+		BindingContext = vm;
 	}
 
   //private bool activityIndicatorIsRunning = true;
