@@ -139,41 +139,41 @@ public partial class LoginPage : ContentPage
 
   //}
 
-  private async void OnCreate(object sender, EventArgs e)
-  {
-    CancellationTokenSource cancellationTokenSource =
-      new CancellationTokenSource();
-    var message = "Your account was created";
-    var dismissalText = "Click Here to Close the SnackBar";
-    TimeSpan duration = TimeSpan.FromSeconds(10);
+  //private async void OnCreate(object sender, EventArgs e)
+  //{
+  //  CancellationTokenSource cancellationTokenSource =
+  //    new CancellationTokenSource();
+  //  var message = "Your account was created";
+  //  var dismissalText = "Click Here to Close the SnackBar";
+  //  TimeSpan duration = TimeSpan.FromSeconds(10);
 
-    Action action = async () =>
-      await DisplayAlert(
-        "Snackbar Dismissed!", 
-        "The user has dismissed the snackbar", 
-        "OK");
+  //  Action action = async () =>
+  //    await DisplayAlert(
+  //      "Snackbar Dismissed!", 
+  //      "The user has dismissed the snackbar", 
+  //      "OK");
 
-    var snackbarOptions = new SnackbarOptions
-    {
-      BackgroundColor = Colors.Red,
-      TextColor = Colors.Yellow,
-      ActionButtonTextColor = Colors.Black,
-      CornerRadius = new CornerRadius(20),
-      Font = Microsoft.Maui.Font.SystemFontOfSize(14),
-      ActionButtonFont = Microsoft.Maui.Font.SystemFontOfSize(14)
-    };
+  //  var snackbarOptions = new SnackbarOptions
+  //  {
+  //    BackgroundColor = Colors.Red,
+  //    TextColor = Colors.Yellow,
+  //    ActionButtonTextColor = Colors.Black,
+  //    CornerRadius = new CornerRadius(20),
+  //    Font = Microsoft.Maui.Font.SystemFontOfSize(14),
+  //    ActionButtonFont = Microsoft.Maui.Font.SystemFontOfSize(14)
+  //  };
 
-    var snackbar = Snackbar.Make(
-      message, 
-      action, 
-      dismissalText, 
-      duration, 
-      snackbarOptions);
+  //  var snackbar = Snackbar.Make(
+  //    message, 
+  //    action, 
+  //    dismissalText, 
+  //    duration, 
+  //    snackbarOptions);
 
-    await snackbar.Show(cancellationTokenSource.Token);
+  //  await snackbar.Show(cancellationTokenSource.Token);
 
-    vm.ActivityIndicatorIsRunning = false;
-  }
+  //  vm.ActivityIndicatorIsRunning = false;
+  //}
 
 
 
