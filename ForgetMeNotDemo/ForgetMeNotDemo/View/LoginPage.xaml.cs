@@ -21,7 +21,6 @@ public partial class LoginPage : ContentPage
   LoginViewModel vm = new LoginViewModel();
 	public LoginPage()
   {
-    //ConstructMessage message = new ConstructMessage();
     WeakReferenceMessenger.Default.Register<ConstructMessage> (this, async ( m,e) =>
     {
 
