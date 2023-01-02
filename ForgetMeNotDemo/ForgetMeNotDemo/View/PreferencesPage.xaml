@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    Title="Preferences"
+    x:Class="ForgetMeNotDemo.View.PreferencesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                LineBreakMode="WordWrap"
+                Margin="5"
+                Padding="5"
+                Text="Please fill in as many preferences as you care to. &#10; &#10;The fields are 'free form,' fill in anything you like. Remember, the more information you provide to your buddies the better they will be able to match to what you like. Each of the categories can be edited for your needs.&#10; &#10; Save as frequently as you like, and to edit, just change the value you entered and press save." />
+            <Button
+                Clicked="SavePreferences"
+                Command="{Binding SavePreferencesCommand}"
+                Margin="30,20,0,0"
+                Text="Save"
+                WidthRequest="100" />
+            <CollectionView
+                ItemsSource="{Binding Preferences}"
+                Margin="20,20,10,10"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,2*">
+                            <Entry
+                                FontSize="10"
+                                Grid.Column="0"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding PreferencePrompt, Mode=TwoWay}"
+                                TextColor="{OnPlatform Black,
+                                                       iOS=White}" />
+                            <Entry
+                                FontSize="10"
+                                Grid.Column="1"
+                                HeightRequest="32"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding PreferenceValue, Mode=TwoWay}"
+                                TextColor="{OnPlatform Black,
+                                                       iOS=White}"
+                                WidthRequest="350" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button
+                Clicked="SavePreferences"
+                Command="{Binding SavePreferencesCommand}"
+                Margin="30,20,0,0"
+                Text="Save" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
