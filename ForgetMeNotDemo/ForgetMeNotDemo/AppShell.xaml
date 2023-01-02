@@ -4,11 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ForgetMeNotDemo"
+    xmlns:view="using:ForgetMeNotDemo.View"
+    xmlns:view1="clr-namespace:ForgetMeNotDemo.View"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPageCS}"
-        Route="MainPageCS" />
+        ContentTemplate="{DataTemplate view1:LoginPage}"
+        Route="LoginPage" />
 
 </Shell>
