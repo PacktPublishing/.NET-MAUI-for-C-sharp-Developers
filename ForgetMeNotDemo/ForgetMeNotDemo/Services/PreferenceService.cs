@@ -68,6 +68,146 @@ namespace ForgetMeNotDemo.Services
           PreferencePrompt = "Favorite Music",
           PreferenceValue = ""
         },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
+        new Preference()
+        {
+          PreferencePrompt = "Preference",
+          PreferenceValue = ""
+        },
 
       };
       return preferences;

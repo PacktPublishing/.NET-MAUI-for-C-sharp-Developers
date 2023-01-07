@@ -66,9 +66,6 @@
 	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Preferences.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\PreferencesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
