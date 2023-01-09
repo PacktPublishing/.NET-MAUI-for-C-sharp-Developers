@@ -150,5 +150,25 @@
             IsRunning="{Binding ActivityIndicatorIsRunning}" />-->
 
         </Grid>
+        <FlexLayout
+            Direction="Row"
+            Wrap="Wrap">
+            <Button
+                HeightRequest="50"
+                Text="Button1"
+                WidthRequest="120" />
+            <Button
+                HeightRequest="50"
+                Text="Button2"
+                WidthRequest="120" />
+            <Button
+                HeightRequest="50"
+                Text="Button3"
+                WidthRequest="120" />
+            <Button
+                HeightRequest="50"
+                Text="Button4"
+                WidthRequest="120" />
+        </FlexLayout>
     </StackLayout>
 </ContentPage>
