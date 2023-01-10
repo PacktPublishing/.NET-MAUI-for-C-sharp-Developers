@@ -57,12 +57,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\AboutPage.xaml.cs">
+	    <DependentUpon>AboutPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\PreferencesPage.xaml.cs">
 	    <DependentUpon>PreferencesPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\AboutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\BuddiesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

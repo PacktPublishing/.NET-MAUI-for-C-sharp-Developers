@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 namespace ForgetMeNotDemo.ViewModel;
 
 [ObservableObject]
-public partial class MainPageViewModel
+public partial class MainViewModel
 {
   [ObservableProperty] private bool flowerIsVisible = true;
 

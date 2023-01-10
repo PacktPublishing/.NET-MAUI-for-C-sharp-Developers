@@ -91,7 +91,7 @@
                 Grid.Column="0"
                 Grid.Row="3"
                 HasShadow="True"
-                HeightRequest="150"
+                HeightRequest="50"
                 WidthRequest="50">
                 <Frame.Background>
                     <LinearGradientBrush EndPoint="1,0">
@@ -108,8 +108,8 @@
                 Grid.ColumnSpan="2"
                 Grid.Row="3"
                 HasShadow="True"
-                HeightRequest="150"
-                WidthRequest="100">
+                HeightRequest="50"
+                WidthRequest="150">
                 <Frame.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Yellow" Offset="0.2" />
@@ -150,25 +150,5 @@
             IsRunning="{Binding ActivityIndicatorIsRunning}" />-->
 
         </Grid>
-        <FlexLayout
-            Direction="Row"
-            Wrap="Wrap">
-            <Button
-                HeightRequest="50"
-                Text="Button1"
-                WidthRequest="120" />
-            <Button
-                HeightRequest="50"
-                Text="Button2"
-                WidthRequest="120" />
-            <Button
-                HeightRequest="50"
-                Text="Button3"
-                WidthRequest="120" />
-            <Button
-                HeightRequest="50"
-                Text="Button4"
-                WidthRequest="120" />
-        </FlexLayout>
     </StackLayout>
 </ContentPage>

@@ -6,7 +6,7 @@ public partial class MainPage : ContentPage
 {
   private bool canBeSeen = true;
 
-  private MainPageViewModel vm = new MainPageViewModel();
+  private MainViewModel vm = new MainViewModel();
 
   public MainPage()
 	{
