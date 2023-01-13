@@ -19,7 +19,7 @@
                 Text="Save"
                 WidthRequest="100" />
             <CollectionView
-                ItemsSource="{Binding Preferences}"
+                ItemsSource="{Binding PreferenceList}"
                 Margin="20,20,10,10"
                 SelectionMode="None">
                 <CollectionView.ItemTemplate>
