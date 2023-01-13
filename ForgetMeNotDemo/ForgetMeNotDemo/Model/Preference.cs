@@ -5,7 +5,8 @@ namespace ForgetMeNotDemo.Model;
 [ObservableObject]
 public partial class Preference
 {
-  [ObservableProperty] private string preferencePrompt;
-  [ObservableProperty] private string preferenceValue;
+    [ObservableProperty] private int id;
+    [ObservableProperty] private string preferencePrompt;
+    [ObservableProperty] private string preferenceValue;
 
 }

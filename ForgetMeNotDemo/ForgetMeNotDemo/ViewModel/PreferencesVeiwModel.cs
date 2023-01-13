@@ -6,7 +6,7 @@ namespace ForgetMeNotDemo.ViewModel;
 [ObservableObject]
 public partial class PreferencesViewModel
 {
-  [ObservableProperty] private List<Preference> preferences;
+  [ObservableProperty] private List<Preference> preferenceList;
   private readonly PreferenceService service;
   
   public PreferencesViewModel()
@@ -16,7 +16,7 @@ public partial class PreferencesViewModel
 
   public async Task Init()
   {
-    Preferences = await service.GetPreferences();
+    PreferenceList = await service.GetPreferences();
   }
   
 }

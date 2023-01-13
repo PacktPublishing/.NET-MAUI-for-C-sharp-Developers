@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ForgetMeNotDemo.View.AboutPage"
-             Title="About">
-    <VerticalStackLayout Margin="10" Spacing="10">
+<ContentPage
+    Title="About"
+    x:Class="ForgetMeNotDemo.View.AboutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <VerticalStackLayout
+        Margin="10"
+        Spacing="10">
         <HorizontalStackLayout Spacing="10">
             <Label
                 FontAttributes="Bold"
@@ -36,6 +39,13 @@
             HeightRequest="60"
             Text="Concept and original design by Robin Liberty"
             VerticalTextAlignment="Center" />
-        <Label FontSize="Small" Text="Icons from IconScout: https://iconscout.com" />
+        <Label
+            FontSize="Small"
+            Text="Icons from IconScout: https://iconscout.com" />
+        <Button
+            Command="{Binding OpenPreferencesCommand}"
+            Margin="10,50,10,0"
+            Text="Preferences"
+            WidthRequest="150" />
     </VerticalStackLayout>
 </ContentPage>
