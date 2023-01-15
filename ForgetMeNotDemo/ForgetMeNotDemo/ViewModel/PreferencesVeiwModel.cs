@@ -7,11 +7,13 @@ namespace ForgetMeNotDemo.ViewModel;
 public partial class PreferencesViewModel
 {
   [ObservableProperty] private List<Preference> preferenceList;
-  private readonly PreferenceService service;
+
+  private IPreferenceService service;
+
   
-  public PreferencesViewModel()
+  public PreferencesViewModel(IPreferenceService service)
   {
-    service = new();
+    this.service = service;
   }
 
   public async Task Init()

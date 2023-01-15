@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using ForgetMeNotDemo.Services;
 using ForgetMeNotDemo.ViewModel;
 
 namespace ForgetMeNotDemo.View;
@@ -9,7 +10,8 @@ public partial class PreferencesPage : ContentPage
   private PreferencesViewModel vm;
 	public PreferencesPage()
   {
-    vm = new PreferencesViewModel();
+    IPreferenceService service = new PreferenceService();
+    vm = new PreferencesViewModel(service);
     BindingContext = vm;
 		InitializeComponent();
 	}

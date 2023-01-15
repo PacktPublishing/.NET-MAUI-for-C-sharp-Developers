@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ForgetMeNotDemo.Model;
+﻿using ForgetMeNotDemo.Model;
 
-namespace ForgetMeNotDemo.Services
+namespace ForgetMeNotDemo.Services;
+
+public class PreferenceService : IPreferenceService
 {
-  public class PreferenceService
+  public async Task<List<Preference>> GetPreferences()
   {
-    public async Task<List<Preference>> GetPreferences()
-    {
-      return await GetPreferencesMock();
-    }
+    return await GetPreferencesMock();
+  }
 
-    private async Task<List<Preference>> GetPreferencesMock()
-    {
-      List<Preference> preferences = new()
+  public async Task<List<Preference>> GetPreferencesMock()
+  {
+    List<Preference> preferences = new()
       {
         new Preference()
         {
@@ -210,7 +205,7 @@ namespace ForgetMeNotDemo.Services
         },
 
       };
-      return preferences;
-    }
+    return preferences;
   }
 }
+
