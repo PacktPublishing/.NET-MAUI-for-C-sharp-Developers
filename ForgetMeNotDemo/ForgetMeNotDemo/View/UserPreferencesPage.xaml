@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    Title="User Preferences"
+    x:Class="ForgetMeNotDemo.View.UserPreferencesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <VerticalStackLayout>
+        <Grid
+            ColumnDefinitions="*,2*"
+            RowDefinitions="*,*,*,*">
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="Display Name" />
+            <Entry
+                Grid.Column="1"
+                Grid.Row="0"
+                Placeholder="Your name as you want it displayed"
+                Text="{Binding DisplayName}" />
+            <Label
+                Grid.Column="0"
+                Grid.Row="1"
+                Text="Theme" />
+            <HorizontalStackLayout
+                Grid.Column="1"
+                Grid.Row="1"
+                RadioButtonGroup.GroupName="{Binding ThemeGroupName}"
+                RadioButtonGroup.SelectedValue="{Binding ThemeSelection}">
+                <RadioButton Content="Dark" />
+                <RadioButton
+                    Content="Light"
+                    IsChecked="True" />
+            </HorizontalStackLayout>
+            <Label
+                Grid.Column="0"
+                Grid.Row="2"
+                Text="Wifi Only?" />
+            <Switch
+                Grid.Column="1"
+                Grid.Row="2"
+                HorizontalOptions="Start"
+                IsToggled="{Binding WifiOnly}"
+                OnColor="Green"
+                ThumbColor="Blue" />
+            <Button
+                Command="{Binding SavePreferencesCommand}"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                HorizontalOptions="Center"
+                Text="Save" />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
