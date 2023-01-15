@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Markup;
+using ForgetMeNotDemo.Services;
+using ForgetMeNotDemo.ViewModel;
 using Microsoft.Extensions.Logging;
 
 namespace ForgetMeNotDemo;
@@ -24,6 +26,13 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+    builder.Services.AddTransient<IPreferenceService, PreferenceService>();
+    
+    builder.Services.AddTransient<AboutViewModel>();
+    builder.Services.AddTransient<BuddyDetailsViewModel>();
+    builder.Services.AddTransient<PreferencesViewModel>();
+    builder.Services.AddTransient<LoginViewModel>();
+
+    return builder.Build();
 	}
 }
