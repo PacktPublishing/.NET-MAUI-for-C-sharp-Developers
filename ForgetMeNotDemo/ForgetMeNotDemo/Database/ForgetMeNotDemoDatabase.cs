@@ -1,6 +1,4 @@
-﻿using ForgetMeNotDemo.Database;
-using ForgetMeNotDemo.Model;
-using SQLite;
+﻿using ForgetMeNotDemo.Model;
 
 public class ForgetMeNotDemoDatabase
 {
