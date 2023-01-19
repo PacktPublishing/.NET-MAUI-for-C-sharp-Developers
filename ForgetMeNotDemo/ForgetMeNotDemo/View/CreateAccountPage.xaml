@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ForgetMeNotDemo.View.CreateAccountPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="CreateAccount">
+    <VerticalStackLayout>
+
+        <Entry
+            HorizontalOptions="FillAndExpand"
+            Keyboard="Text"
+            Placeholder="Enter Name"
+            Text="{Binding Name}">
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidateNameCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            FontSize="13"
+            IsVisible="{Binding ShowNameErrorMessage}"
+            Text="{Binding NameErrorMessage}"
+            TextColor="Red" />
+
+        <Entry
+            HorizontalOptions="FillAndExpand"
+            Keyboard="Email"
+            Placeholder="Enter Email"
+            Text="{Binding Email}">
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidateEmailCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            FontSize="13"
+            IsVisible="{Binding ShowEmailErrorMessage}"
+            Text="{Binding EmailErrorMessage}"
+            TextColor="Red" />
+
+
+        <Entry
+            HorizontalOptions="FillAndExpand"
+            IsPassword="True"
+            Keyboard="Default"
+            Placeholder="Enter Password"
+            Text="{Binding Password}">
+            <Entry.Behaviors>
+                <behaviors:UserStoppedTypingBehavior Command="{Binding ValidatePasswordCommand}" StoppedTypingTimeThreshold="500" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            FontSize="13"
+            IsVisible="{Binding ShowPasswordErrorMessage}"
+            Text="{Binding PasswordErrorMessage}"
+            TextColor="Red" />
+        <Button
+            Margin="0,30,0,0"
+            BackgroundColor="LightGray"
+            Command="{Binding SignUpCommand}"
+            CornerRadius="5"
+            HorizontalOptions="Center"
+            IsEnabled="{Binding EnableButton}"
+            Text="Sign up"
+            TextColor="Black"
+            TextTransform="None"
+            WidthRequest="100" />
+    </VerticalStackLayout>
+</ContentPage>
