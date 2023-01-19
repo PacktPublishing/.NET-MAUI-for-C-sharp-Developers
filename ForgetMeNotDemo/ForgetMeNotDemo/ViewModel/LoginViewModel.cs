@@ -1,41 +1,85 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using ForgetMeNotDemo.View;
+using ForgetMeNot.Api.Dto;
+using ForgetMeNotDemo.Services;
+using ForgetMeNotDemo;
 
-namespace ForgetMeNotDemo.ViewModel;
-
-[ObservableObject]
-public partial class LoginViewModel
+namespace ForgetMeNotDemo.ViewModel
 {
-  [ObservableProperty] private string name;
-  [ObservableProperty] private string password;
-
-  [ObservableProperty] private string lostPasswordExcuse;
-  [ObservableProperty] private bool editorContentVisible = true;
-  [ObservableProperty] private bool activityIndicatorIsRunning = true;
-
-  [RelayCommand]
-  private async void Submit()
+  [ObservableObject]
+  public partial class LoginViewModel
   {
+    private AccountService accountService;
+    [ObservableProperty] private string loginName;
+    [ObservableProperty] private string password;
+    [ObservableProperty] private bool showActivityIndicator = false;
 
-    for (double i = 0.0; i < 1.0; i += 0.1)
+    public LoginViewModel(AccountService accountService)
     {
-      await LoginPage.LoginProgressBar.ProgressTo(i, 500, Easing.Linear);
+      this.accountService = accountService;
     }
 
-    await Application.Current.MainPage.DisplayAlert(
-      "Submit",
-      $"You entered {Name} and {Password}",
-      "OK");
 
-  }
+    [RelayCommand]
+    public async Task DoLogin()
+    {
 
-  [RelayCommand]
-  private void Create()
-  {
-    WeakReferenceMessenger.Default.Send(new ConstructMessage());
+      try
+      {
+        LoginRequest loginRequest = new LoginRequest
+        {
+          Username = LoginName,
+          Password = Password
+        };
 
+        ShowActivityIndicator = true;
+        await accountService.Login(loginRequest);
+        ShowActivityIndicator = false;
+
+        if (accountService.IsLoggedIn())
+        {
+          Application.Current.MainPage = new AppShell();
+          await Shell.Current.GoToAsync("mainpage");
+        }
+        else
+        {
+
+          await Application.Current.MainPage.DisplayAlert("Login failure",
+              "Your username and password do not match our records", "Ok");
+        }
+
+      }
+      catch (Exception exception)
+      {
+        await Application.Current.MainPage.DisplayAlert("Authorization failure",
+            "Your username and password do not match our records", "Ok");
+
+        Console.WriteLine(exception);
+      }
+
+
+    }
+
+    [RelayCommand]
+    public async Task ForgotPassword()
+    {
+
+    }
+
+    [RelayCommand]
+    public async Task DoCreateAccount()
+    {
+      try
+      {
+        Application.Current.MainPage = new AppShell();
+
+        await Shell.Current.GoToAsync($"createaccount");
+
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+      }
+    }
   }
 }

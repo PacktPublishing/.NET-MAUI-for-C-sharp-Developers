@@ -9,8 +9,7 @@ namespace ForgetMeNot.ViewModel;
 [ObservableObject]
 public partial class CreateAccountViewModel
 {
-  private AccountService accountService;
-
+  [ObservableProperty] AccountService accountService;
   [ObservableProperty] private string name;
   [ObservableProperty] private string email;
   [ObservableProperty] private string password;

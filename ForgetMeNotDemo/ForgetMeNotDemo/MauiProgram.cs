@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Markup;
 using ForgetMeNot.ApiClient;
+using ForgetMeNot.ViewModel;
 using ForgetMeNotDemo.Services;
 using ForgetMeNotDemo.View;
 using ForgetMeNotDemo.ViewModel;
@@ -37,6 +38,7 @@ public static class MauiProgram
     builder.Services.AddTransient<MainPage>();
 
     var apiClient = new Client("https://forgetmenotapi20230113114628.azurewebsites.net/");
+    builder.Services.AddSingleton(apiClient);
 
 
     // Services
