@@ -18,8 +18,7 @@ public partial class LoginPage : ContentPage
   private double LoginProgress { get; set; }
   public static ProgressBar LoginProgressBar;
   
-  LoginViewModel vm = new LoginViewModel();
-	public LoginPage()
+	public LoginPage(LoginViewModel vm)
   {
     WeakReferenceMessenger.Default.Register<ConstructMessage> (this, async ( m,e) =>
     {

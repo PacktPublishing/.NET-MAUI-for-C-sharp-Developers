@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Markup;
+using ForgetMeNot.ApiClient;
 using ForgetMeNotDemo.Services;
+using ForgetMeNotDemo.View;
 using ForgetMeNotDemo.ViewModel;
 using Microsoft.Extensions.Logging;
 
@@ -26,12 +28,28 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
+    // Pages
+    builder.Services.AddTransient<AboutPage>();
+    builder.Services.AddTransient<BuddyDetailsPage>();
+    builder.Services.AddTransient<PreferencesPage>();
+    builder.Services.AddTransient<LoginPage>();
+    builder.Services.AddTransient<CreateAccountPage>();
+    builder.Services.AddTransient<MainPage>();
+
+    var apiClient = new Client("https://forgetmenotapi20230113114628.azurewebsites.net/");
+
+
+    // Services
     builder.Services.AddTransient<IPreferenceService, PreferenceService>();
-    
+    builder.Services.AddTransient<AccountService>();
+
+
+    // ViewModels
     builder.Services.AddTransient<AboutViewModel>();
     builder.Services.AddTransient<BuddyDetailsViewModel>();
     builder.Services.AddTransient<PreferencesViewModel>();
     builder.Services.AddTransient<LoginViewModel>();
+    builder.Services.AddTransient<CreateAccountViewModel>();
 
     return builder.Build();
 	}
