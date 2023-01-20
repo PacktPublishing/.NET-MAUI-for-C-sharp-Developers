@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using ForgetMeNotDemo.Model;
 using ForgetMeNotDemo.Services;
 
@@ -20,6 +21,12 @@ public partial class PreferencesViewModel
   {
     PreferenceList = await service.GetPreferences();
   }
-  
+
+  [RelayCommand]
+  private async Task SavePreferencesAsync()
+  {
+    await service.Save(PreferenceList);
+  }
+
 }
 

@@ -1,4 +1,6 @@
-﻿using ForgetMeNot.ApiClient;
+﻿using ForgetMeNot.Api.Domain;
+using ForgetMeNot.Api.Dto;
+using ForgetMeNot.ApiClient;
 using ForgetMeNotDemo.Model;
 
 namespace ForgetMeNotDemo.Services;
@@ -34,6 +36,26 @@ public class PreferenceService : IPreferenceService
     return null;
 
   }
+
+  public async Task Save(List<Preference> preferences)
+  {
+
+    var response = await apiClient.GetProfile();
+    var fullName = response?.FullName;
+
+    var profileUpdateRequest = new ProfileUpdateRequest()
+    {
+      FullName = fullName,
+      Preferences = preferences.Select(p => new UserPreference()
+      {
+        PreferencePrompt = p.PreferencePrompt,
+        PreferenceValue = p.PreferenceValue
+      }).ToList()
+    };
+
+    await apiClient.UpdateProfile(profileUpdateRequest);
+  }
+
 
 }
 
