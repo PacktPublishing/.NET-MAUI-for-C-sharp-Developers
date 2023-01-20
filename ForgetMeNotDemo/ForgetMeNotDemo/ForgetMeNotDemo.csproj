@@ -59,8 +59,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\ForgetMeNot.Api.Domain\ForgetMeNot.Api.Domain\ForgetMeNot.Api.Domain.csproj" />
+	  <ProjectReference Include="..\ForgetMeNot.Api.Dto\ForgetMeNot.Api.Dto\ForgetMeNot.Api.Dto.csproj" />
+	  <ProjectReference Include="..\ForgetMeNot.ApiClient\ForgetMeNot.ApiClient.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="View\AboutPage.xaml.cs">
 	    <DependentUpon>AboutPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\CreateAccountPage.xaml.cs">
+	    <DependentUpon>CreateAccountPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\UserPreferencesPage.xaml.cs">
 	    <DependentUpon>UserPreferencesPage.xaml</DependentUpon>
@@ -78,6 +87,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\BuddyDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\CreateAccountPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\LoginPage.xaml">

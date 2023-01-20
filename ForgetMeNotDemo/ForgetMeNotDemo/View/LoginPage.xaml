@@ -1,154 +1,88 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    Title="Login Page"
     x:Class="ForgetMeNotDemo.View.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOsSpecific="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    Title="Login"
+    iOsSpecific:Page.UseSafeArea="True"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="ModalAnimated">
     <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="FontSize" Value="Medium" />
-            <Setter Property="HorizontalOptions" Value="Start" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="VerticalOptions" Value="Center" />
-            <Setter Property="VerticalTextAlignment" Value="Center" />
-        </Style>
-        <Style
-            TargetType="Label"
-            x:Key="BaseExplicitLabel">
-            <Setter Property="FontSize" Value="Medium" />
-            <Setter Property="HorizontalOptions" Value="Start" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="VerticalOptions" Value="Center" />
-            <Setter Property="VerticalTextAlignment" Value="Center" />
-        </Style>
-
-        <Style
-            BasedOn="{StaticResource BaseExceptionLabel}"
-            TargetType="Label"
-            x:Key="LargeLabel">
-            <Setter Property="FontSize" Value="Large" />
-        </Style>
-        <Style
-            BasedOn="{StaticResource BaseExceptionLabel}"
-            TargetType="Label"
-            x:Key="SmallLabel">
-            <Setter Property="FontSize" Value="Small" />
-        </Style>
-
-
+        <ResourceDictionary>
+            <Style x:Key="Prompt" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
+            <Style x:Key="LoginButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightGray" />
+                <Setter Property="Margin" Value="0,20,0,0" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="WidthRequest" Value="125" />
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout x:Name="LoginStackLayout">
+    <VerticalStackLayout>
         <Grid
             ColumnDefinitions="*,*,*"
-            RowDefinitions="*,*,auto,auto,50,auto"
-            x:Name="LoginGrid">
+            RowDefinitions="Auto,Auto,Auto,Auto"
+            RowSpacing="10">
             <Label
-                Grid.Column="0"
                 Grid.Row="0"
-                HorizontalOptions="End"
-                Margin="5,20,0,10"
-                Text="User Name"
-                VerticalOptions="Center" />
+                Grid.Column="0"
+                Style="{StaticResource Prompt}"
+                Text="Your email" />
             <Entry
+                Grid.Row="0"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Grid.Row="0"
-                HorizontalOptions="Center"
-                Margin="5,20,0,10"
-                Placeholder="User Name"
-                Text="{Binding Name}"
-                VerticalOptions="End"
+                Placeholder="User name"
+                Text="{Binding LoginName}"
                 WidthRequest="150" />
             <Label
-                Grid.Column="0"
                 Grid.Row="1"
+                Grid.Column="0"
                 HorizontalOptions="End"
-                Margin="5,10"
-                Text="Password"
-                VerticalOptions="Center" />
+                Style="{StaticResource Prompt}"
+                Text="Password" />
             <Entry
+                Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Grid.Row="1"
-                HorizontalOptions="Center"
                 IsPassword="True"
                 Placeholder="Password"
                 Text="{Binding Password}"
-                VerticalOptions="Start"
                 WidthRequest="150" />
-            <BoxView
-                Color="Red"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                Grid.Row="2"
-                HeightRequest="2"
-                Margin="0,10"
-                WidthRequest="400" />
-            <Frame
-                BorderColor="Blue"
-                CornerRadius="10"
-                Grid.Column="0"
-                Grid.Row="3"
-                HasShadow="True"
-                HeightRequest="50"
-                WidthRequest="50">
-                <Frame.Background>
-                    <LinearGradientBrush EndPoint="1,0">
-                        <GradientStop Color="Yellow" Offset="0.2" />
-                        <GradientStop Color="Red" Offset="0.1" />
-                    </LinearGradientBrush>
-                </Frame.Background>
-            </Frame>
-
-            <Frame
-                BorderColor="Blue"
-                CornerRadius="10"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Grid.Row="3"
-                HasShadow="True"
-                HeightRequest="50"
-                WidthRequest="150">
-                <Frame.Background>
-                    <RadialGradientBrush>
-                        <GradientStop Color="Yellow" Offset="0.2" />
-                        <GradientStop Color="Red" Offset="0.1" />
-                    </RadialGradientBrush>
-                </Frame.Background>
-            </Frame>
-
             <Button
-                BackgroundColor="Gray"
-                Command="{Binding SubmitCommand}"
+                Grid.Row="2"
                 Grid.Column="0"
-                Grid.Row="4"
-                Margin="5"
+                Command="{Binding DoLoginCommand}"
+                Style="{StaticResource LoginButton}"
                 Text="Submit" />
             <Button
-                BackgroundColor="Gray"
-                Command="{Binding CreateCommand}"
+                Grid.Row="2"
                 Grid.Column="1"
-                Grid.Row="4"
-                Margin="5"
+                Command="{Binding DoCreateAccountCommand}"
+                Style="{StaticResource LoginButton}"
                 Text="Create Account" />
             <Button
-                BackgroundColor="Gray"
-                Clicked="OnForgotPassword"
+                Grid.Row="2"
                 Grid.Column="2"
-                Grid.Row="4"
-                Margin="5"
+                BackgroundColor="LightGray"
+                Command="{Binding ForgotPasswordCommand}"
+                Style="{StaticResource LoginButton}"
                 Text="Forgot Password" />
-            <Label
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                Grid.Row="5"
-                Text=""
-                x:Name="CreateAccount" />
-            <!--<ActivityIndicator
-            Color="Blue"
-            IsRunning="{Binding ActivityIndicatorIsRunning}" />-->
-
         </Grid>
-    </StackLayout>
+        <ActivityIndicator
+            x:Name="activityIndicator"
+            HeightRequest="50"
+            IsRunning="{Binding ShowActivityIndicator}"
+            Color="Blue" />
+
+    </VerticalStackLayout>
 </ContentPage>
