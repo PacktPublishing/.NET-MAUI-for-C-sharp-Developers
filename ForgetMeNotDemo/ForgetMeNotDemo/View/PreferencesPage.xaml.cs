@@ -8,10 +8,9 @@ namespace ForgetMeNotDemo.View;
 public partial class PreferencesPage : ContentPage
 {
   private PreferencesViewModel vm;
-	public PreferencesPage()
+	public PreferencesPage(PreferencesViewModel vm)
   {
-    IPreferenceService service = new PreferenceService();
-    vm = new PreferencesViewModel(service);
+    this.vm = vm;
     BindingContext = vm;
 		InitializeComponent();
 	}
