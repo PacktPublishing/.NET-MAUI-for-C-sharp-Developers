@@ -3,6 +3,7 @@
     Title="Preferences"
     x:Class="ForgetMeNotDemo.View.PreferencesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:services="clr-namespace:ForgetMeNotDemo.Services"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Resources>
@@ -59,6 +60,16 @@
     </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout>
+            <Entry Placeholder="Search" x:Name="SearchEntry">
+                <Entry.Behaviors>
+                    <behaviors:UserStoppedTypingBehavior
+                        Command="{Binding PreferencesSearchCommand}"
+                        CommandParameter="{Binding Source={x:Reference SearchEntry}, Path=Text}"    
+                        MinimumLengthThreshold="4"
+                        ShouldDismissKeyboardAutomatically="True"
+                        StoppedTypingTimeThreshold="500" />
+                </Entry.Behaviors>
+            </Entry>
             <Label
                 HorizontalOptions="Center"
                 LineBreakMode="WordWrap"

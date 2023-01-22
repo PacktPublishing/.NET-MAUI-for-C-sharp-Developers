@@ -10,4 +10,11 @@ public partial class LoginPage : ContentPage
     BindingContext = viewModel;
     InitializeComponent();
   }
+
+  protected override void OnAppearing()
+  {
+    base.OnAppearing();
+    passwordEntry.Text = "";
+
+  }
 }

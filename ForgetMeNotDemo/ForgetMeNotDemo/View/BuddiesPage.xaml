@@ -6,10 +6,35 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <VerticalStackLayout>
         <Label
-            HorizontalOptions="Center"
-            Text="Buddies Page"
-            VerticalOptions="Center" />
-        <Button Text="Go to details"
-               Command="{Binding GoToDetailsCommand}" />
+            Margin="20,20,20,0"
+            FontSize="Small"
+            Text="Please click on a buddy for details..." />
+        <CollectionView
+            Margin="20,20,10,10"
+            ItemsSource="{Binding Buddies}"
+            SelectedItem="{Binding SelectedBuddy}"
+            SelectionChangedCommand="{Binding BuddySelectionChangedCommand}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,*">
+                        <Label
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            Text="{Binding Name}" />
+                        <Label
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            Text="{Binding Status}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Margin="0,30,0,0"
+            Command="{Binding AddBuddyCommand}"
+            Text="Add Buddy" />
+
     </VerticalStackLayout>
 </ContentPage>
