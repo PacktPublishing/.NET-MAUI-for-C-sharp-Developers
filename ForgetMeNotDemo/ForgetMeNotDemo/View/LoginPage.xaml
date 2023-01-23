@@ -118,7 +118,7 @@
                         Binding="{Binding Source={x:Reference passwordEntry}, Path=Text.Length}"
                         TargetType="Button"
                         Value="0">
-                        <Setter Property="IsVisible" Value="False" />
+                        <Setter Property="IsEnabled" Value="False" />
                     </DataTrigger>
                 </Button.Triggers>
             </Button>
