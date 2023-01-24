@@ -4,9 +4,19 @@ namespace ForgetMeNotDemo.View;
 
 public partial class BuddiesPage : ContentPage
 {
-	public BuddiesPage()
+  private BuddiesViewModel vm;
+	public BuddiesPage(BuddiesViewModel vm)
 	{
+    this.vm = vm;
+    BindingContext = vm;
+    
 		InitializeComponent();
-    BindingContext = new BuddiesViewModel();
+  }
+
+  protected override async void OnAppearing()
+  {
+    base.OnAppearing();
+
+    await vm.Init();
   }
 }

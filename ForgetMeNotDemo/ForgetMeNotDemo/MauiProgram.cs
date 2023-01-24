@@ -31,6 +31,7 @@ public static class MauiProgram
 
     // Pages
     builder.Services.AddTransient<AboutPage>();
+    builder.Services.AddTransient<BuddiesPage>();
     builder.Services.AddTransient<BuddyDetailsPage>();
     builder.Services.AddTransient<PreferencesPage>();
     builder.Services.AddTransient<LoginPage>();
@@ -43,11 +44,13 @@ public static class MauiProgram
 
     // Services
     builder.Services.AddTransient<IPreferenceService, PreferenceService>();
+    builder.Services.AddTransient<IBuddyService, BuddyService>();
     builder.Services.AddTransient<AccountService>();
 
 
     // ViewModels
     builder.Services.AddTransient<AboutViewModel>();
+    builder.Services.AddTransient<BuddiesViewModel>();
     builder.Services.AddTransient<BuddyDetailsViewModel>();
     builder.Services.AddTransient<PreferencesViewModel>();
     builder.Services.AddTransient<LoginViewModel>();
