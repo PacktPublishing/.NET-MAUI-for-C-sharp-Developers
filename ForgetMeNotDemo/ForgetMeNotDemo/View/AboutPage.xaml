@@ -41,7 +41,8 @@
             VerticalTextAlignment="Center" />
         <Label
             FontSize="Small"
-            Text="Icons from IconScout: https://iconscout.com" />
+            Text="Icons from IconScout: https://iconscout.com/licenses#simple_license" />
+        
         <Button
             Command="{Binding OpenPreferencesCommand}"
             Margin="10,50,10,0"
