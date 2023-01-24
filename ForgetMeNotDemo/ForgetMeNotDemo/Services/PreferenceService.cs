@@ -1,211 +1,61 @@
-﻿using ForgetMeNotDemo.Model;
+﻿using ForgetMeNot.Api.Domain;
+using ForgetMeNot.Api.Dto;
+using ForgetMeNot.ApiClient;
+using ForgetMeNotDemo.Model;
 
 namespace ForgetMeNotDemo.Services;
 
 public class PreferenceService : IPreferenceService
 {
+  readonly Client apiClient;
+
+  public PreferenceService(Client apiClient)
+  {
+    this.apiClient = apiClient;
+  }
   public async Task<List<Preference>> GetPreferences()
   {
-    return await GetPreferencesMock();
-  }
-
-  public async Task<List<Preference>> GetPreferencesMock()
-  {
-    List<Preference> preferences = new()
+    try
+    {
+      var response = await apiClient.GetProfile();
+      return response?.Preferences.Select(p => new Preference
       {
-        new Preference()
-        {
-          PreferencePrompt = "Shirt Size",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Music Genre",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Color",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Food",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Movie",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite TV Show",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Book",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Sport",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Animal",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Favorite Music",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
-        new Preference()
-        {
-          PreferencePrompt = "Preference",
-          PreferenceValue = ""
-        },
+        PreferencePrompt = p.PreferencePrompt,
+        PreferenceValue = p.PreferenceValue
 
-      };
-    return preferences;
+      }).ToList();
+    }
+    catch (Exception e)
+    {
+      await Application.Current.MainPage.DisplayAlert("Preferences error",
+        "We were unable to get your preferences", "Ok");
+
+      Console.WriteLine(e);
+    }
+
+    return null;
+
   }
+
+  public async Task Save(List<Preference> preferences)
+  {
+
+    var response = await apiClient.GetProfile();
+    var fullName = response?.FullName;
+
+    var profileUpdateRequest = new ProfileUpdateRequest()
+    {
+      FullName = fullName,
+      Preferences = preferences.Select(p => new UserPreference()
+      {
+        PreferencePrompt = p.PreferencePrompt,
+        PreferenceValue = p.PreferenceValue
+      }).ToList()
+    };
+
+    await apiClient.UpdateProfile(profileUpdateRequest);
+  }
+
+
 }
 

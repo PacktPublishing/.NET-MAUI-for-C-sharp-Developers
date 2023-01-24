@@ -3,9 +3,73 @@
     Title="Preferences"
     x:Class="ForgetMeNotDemo.View.PreferencesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:services="clr-namespace:ForgetMeNotDemo.Services"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="PreferenceTemplate">
+                <Grid ColumnDefinitions="*,2*">
+                    <Entry
+                        FontSize="10"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding PreferencePrompt, Mode=TwoWay}"
+                        TextColor="{OnPlatform Black,
+                                               iOS=White}" />
+                    <Entry
+                        FontSize="10"
+                        Grid.Column="1"
+                        HeightRequest="32"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding PreferenceValue, Mode=TwoWay}"
+                        TextColor="{OnPlatform Black,
+                                               iOS=White}"
+                        WidthRequest="350" />
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="PreferenceTemplateEmpty">
+                <Grid ColumnDefinitions="*,2*">
+                    <Entry
+                        FontSize="10"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding PreferencePrompt, Mode=TwoWay}"
+                        TextColor="{OnPlatform Red,
+                                               iOS=Yellow}" />
+                    <Entry
+                        FontSize="10"
+                        Grid.Column="1"
+                        HeightRequest="32"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding PreferenceValue, Mode=TwoWay}"
+                        TextColor="{OnPlatform Black,
+                                               iOS=White}"
+                        WidthRequest="350" />
+                </Grid>
+            </DataTemplate>
+            <services:PreferenceDataTemplateSelector
+                PreferenceTemplate="{StaticResource PreferenceTemplate}"
+                PreferenceTemplateEmpty="{StaticResource PreferenceTemplateEmpty}"
+                x:Key="PreferenceDataTemplateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout>
+            <Entry Placeholder="Search" x:Name="SearchEntry">
+                <Entry.Behaviors>
+                    <behaviors:UserStoppedTypingBehavior
+                        Command="{Binding PreferencesSearchCommand}"
+                        CommandParameter="{Binding Source={x:Reference SearchEntry}, Path=Text}"    
+                        MinimumLengthThreshold="4"
+                        ShouldDismissKeyboardAutomatically="True"
+                        StoppedTypingTimeThreshold="500" />
+                </Entry.Behaviors>
+            </Entry>
             <Label
                 HorizontalOptions="Center"
                 LineBreakMode="WordWrap"
@@ -19,35 +83,10 @@
                 Text="Save"
                 WidthRequest="100" />
             <CollectionView
+                ItemTemplate="{StaticResource PreferenceDataTemplateSelector}"
                 ItemsSource="{Binding PreferenceList}"
                 Margin="20,20,10,10"
-                SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="*,2*">
-                            <Entry
-                                FontSize="10"
-                                Grid.Column="0"
-                                HorizontalOptions="Start"
-                                HorizontalTextAlignment="Start"
-                                Text="{Binding PreferencePrompt, Mode=TwoWay}"
-                                TextColor="{OnPlatform Black,
-                                                       iOS=White}" />
-                            <Entry
-                                FontSize="10"
-                                Grid.Column="1"
-                                HeightRequest="32"
-                                HorizontalOptions="Start"
-                                HorizontalTextAlignment="Start"
-                                Text="{Binding PreferenceValue, Mode=TwoWay}"
-                                TextColor="{OnPlatform Black,
-                                                       iOS=White}"
-                                WidthRequest="350" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
+                SelectionMode="None" />
             <Button
                 Clicked="SavePreferences"
                 Command="{Binding SavePreferencesCommand}"

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="ForgetMeNotDemo.View.LoginPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:iOsSpecific="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="ModalAnimated"
     Title="Login"
     iOsSpecific:Page.UseSafeArea="True"
-    Shell.NavBarIsVisible="False"
-    Shell.PresentationMode="ModalAnimated">
+    x:Class="ForgetMeNotDemo.View.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:iOsSpecific="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="Prompt" TargetType="Label">
+            <Style
+                TargetType="Label"
+                x:Key="Prompt">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold" />
@@ -19,11 +22,43 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="End" />
             </Style>
-            <Style x:Key="LoginButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="LightGray" />
+            <Style
+                TargetType="Button"
+                x:Key="LoginButton">
                 <Setter Property="Margin" Value="0,20,0,0" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="WidthRequest" Value="125" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="LightGreen" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Green" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Gray" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style
+                TargetType="Entry"
+                x:Key="InvalidUserName">
+                <Setter Property="BackgroundColor" Value="Red" />
+            </Style>
+            <Style
+                TargetType="Entry"
+                x:Key="ValidUserName">
+                <Setter Property="BackgroundColor" Value="LightGreen" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -33,56 +68,73 @@
             RowDefinitions="Auto,Auto,Auto,Auto"
             RowSpacing="10">
             <Label
-                Grid.Row="0"
                 Grid.Column="0"
+                Grid.Row="0"
                 Style="{StaticResource Prompt}"
                 Text="Your email" />
             <Entry
-                Grid.Row="0"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Placeholder="User name"
+                Grid.Row="0"
+                Placeholder="Please enter your email address"
                 Text="{Binding LoginName}"
-                WidthRequest="150" />
+                WidthRequest="150">
+                <Entry.Behaviors>
+                    <behaviors:EmailValidationBehavior
+                        Flags="ValidateOnValueChanged"
+                        InvalidStyle="{StaticResource InvalidUserName}"
+                        ValidStyle="{StaticResource ValidUserName}" />
+                </Entry.Behaviors>
+            </Entry>
             <Label
-                Grid.Row="1"
                 Grid.Column="0"
+                Grid.Row="1"
                 HorizontalOptions="End"
                 Style="{StaticResource Prompt}"
                 Text="Password" />
             <Entry
-                Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
+                Grid.Row="1"
                 IsPassword="True"
                 Placeholder="Password"
                 Text="{Binding Password}"
-                WidthRequest="150" />
+                WidthRequest="150"
+                x:Name="passwordEntry" />
             <Button
-                Grid.Row="2"
-                Grid.Column="0"
                 Command="{Binding DoLoginCommand}"
+                Grid.Column="0"
+                Grid.Row="2"
                 Style="{StaticResource LoginButton}"
                 Text="Submit" />
             <Button
-                Grid.Row="2"
-                Grid.Column="1"
                 Command="{Binding DoCreateAccountCommand}"
-                Style="{StaticResource LoginButton}"
-                Text="Create Account" />
-            <Button
+                Grid.Column="1"
                 Grid.Row="2"
-                Grid.Column="2"
+                Style="{StaticResource LoginButton}"
+                Text="Create Account">
+                <Button.Triggers>
+                    <DataTrigger
+                        Binding="{Binding Source={x:Reference passwordEntry}, Path=Text.Length}"
+                        TargetType="Button"
+                        Value="0">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button
                 BackgroundColor="LightGray"
                 Command="{Binding ForgotPasswordCommand}"
+                Grid.Column="2"
+                Grid.Row="2"
                 Style="{StaticResource LoginButton}"
                 Text="Forgot Password" />
         </Grid>
         <ActivityIndicator
-            x:Name="activityIndicator"
+            Color="Blue"
             HeightRequest="50"
             IsRunning="{Binding ShowActivityIndicator}"
-            Color="Blue" />
+            x:Name="activityIndicator" />
 
     </VerticalStackLayout>
 </ContentPage>
