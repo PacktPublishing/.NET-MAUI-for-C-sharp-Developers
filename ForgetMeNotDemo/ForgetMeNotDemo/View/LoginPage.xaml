@@ -24,13 +24,13 @@
         </Style>
 
         <Style
-            BasedOn="{StaticResource BaseExceptionLabel}"
+            BasedOn="{StaticResource BaseExplicitLabel}"
             TargetType="Label"
             x:Key="LargeLabel">
             <Setter Property="FontSize" Value="Large" />
         </Style>
         <Style
-            BasedOn="{StaticResource BaseExceptionLabel}"
+            BasedOn="{StaticResource BaseExplicitLabel}"
             TargetType="Label"
             x:Key="SmallLabel">
             <Setter Property="FontSize" Value="Small" />
