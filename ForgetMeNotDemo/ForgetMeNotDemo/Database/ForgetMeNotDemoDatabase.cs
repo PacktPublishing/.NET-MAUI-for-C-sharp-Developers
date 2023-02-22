@@ -31,6 +31,6 @@ public class ForgetMeNotDemoDatabase
     public async Task<List<Preference>> GetPreferences()
     {
         await Init();
-        return await Database.Table<Preference>();
+        return await Database.Table<Preference>().ToListAsync();
     }
 }
