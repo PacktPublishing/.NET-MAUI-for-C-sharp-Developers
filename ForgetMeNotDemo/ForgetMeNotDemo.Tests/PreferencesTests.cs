@@ -26,7 +26,6 @@ public class PreferencesTests
 
     Preference pref1 = new()
     {
-      Id = 1,
       PreferencePrompt = "Shirt Size",
       PreferenceValue = "Large"
     };
