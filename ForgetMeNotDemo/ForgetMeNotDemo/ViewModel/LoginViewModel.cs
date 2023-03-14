@@ -46,6 +46,7 @@ namespace ForgetMeNotDemo.ViewModel
 
           await Application.Current.MainPage.DisplayAlert("Login failure",
               "Your username and password do not match our records", "Ok");
+                    ShowActivityIndicator = false;
         }
 
       }
@@ -53,6 +54,7 @@ namespace ForgetMeNotDemo.ViewModel
       {
         await Application.Current.MainPage.DisplayAlert("Authorization failure",
             "Your username and password do not match our records", "Ok");
+                ShowActivityIndicator = false;
 
         Console.WriteLine(exception);
       }
