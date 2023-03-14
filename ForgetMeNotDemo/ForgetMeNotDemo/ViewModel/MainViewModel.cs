@@ -24,6 +24,11 @@ public partial class MainViewModel
     FlowerIsVisible = !FlowerIsVisible;
   }
 
+    [RelayCommand]
+    private async void GoToLogin()
+    {
+        await Shell.Current.GoToAsync("loginpage");
+    }
 
 
 }
