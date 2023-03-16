@@ -23,6 +23,7 @@ public partial class CreateAccountViewModel
   [ObservableProperty] private bool isValidName;
   [ObservableProperty] private bool isValidEmail;
   [ObservableProperty] private bool isValidPassword;
+  [ObservableProperty] private bool createAccountIsRunning;
 
   public CreateAccountViewModel(AccountService accountService)
   {
@@ -44,13 +45,16 @@ public partial class CreateAccountViewModel
 
       try
       {
+          CreateAccountIsRunning = true;
         await accountService.CreateAccount(accountCreateRequest);
+        CreateAccountIsRunning = false;
         await Application.Current.MainPage.DisplayAlert("Sign up completed",
             "Your user has been created successfully", "Ok");
         await Shell.Current.GoToAsync("..");
       }
       catch (Exception e)
       {
+          CreateAccountIsRunning = false;
         await Application.Current.MainPage.DisplayAlert("Sign up failed",
             "We were not able to create an account with that user name", "Ok");
       }
