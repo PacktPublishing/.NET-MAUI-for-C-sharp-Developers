@@ -52,11 +52,12 @@ public class PreferencesTests
     // Act
     await preferencesViewModel.Init();
 
-    // Assert
-    Assert.NotEmpty(preferencesViewModel.PreferenceList);
+        // Assert
+        Assert.NotEmpty(preferencesViewModel.PreferenceList);
+        //Assert.Empty(preferencesViewModel.PreferenceList);
   }
 
-  [Fact]
+    [Fact]
   public async void AfterCallingInitPreferencesIsEmptyButNoException()
   {
     // Arrange
