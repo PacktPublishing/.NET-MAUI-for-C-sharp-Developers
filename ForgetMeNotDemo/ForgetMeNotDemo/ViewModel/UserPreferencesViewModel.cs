@@ -21,9 +21,9 @@ public partial class UserPreferencesViewModel
 
   public UserPreferencesViewModel()
   {
-    displayName = Preferences.Default.Get("DisplayName", "Unknown");
-    themeSelection = Preferences.Default.Get("ThemeSelection", "Light");
-    wifiOnly = Preferences.Default.Get("WifiOnly", false);
+    DisplayName = Preferences.Default.Get("DisplayName", "Unknown");
+    ThemeSelection = Preferences.Default.Get("ThemeSelection", "Light");
+    WifiOnly = Preferences.Default.Get("WifiOnly", false);
   }
 }
 
