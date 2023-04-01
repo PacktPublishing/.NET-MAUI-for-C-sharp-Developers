@@ -22,9 +22,7 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="End" />
             </Style>
-            <Style
-                TargetType="Button"
-                x:Key="LoginButton">
+            <Style TargetType="Button">
                 <Setter Property="Margin" Value="0,20,0,0" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="WidthRequest" Value="125" />
@@ -52,13 +50,13 @@
             </Style>
             <Style
                 TargetType="Entry"
-                x:Key="InvalidUserName">
-                <Setter Property="BackgroundColor" Value="Red" />
+                x:Key="InvalidEntryStyle">
+                <Setter Property="TextColor" Value="Red" />
             </Style>
             <Style
                 TargetType="Entry"
-                x:Key="ValidUserName">
-                <Setter Property="BackgroundColor" Value="LightGreen" />
+                x:Key="ValidEntryStyle">
+                <Setter Property="TextColor" Value="Black" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -78,12 +76,13 @@
                 Grid.Row="0"
                 Placeholder="Please enter your email address"
                 Text="{Binding LoginName}"
-                WidthRequest="150">
+                WidthRequest="150"
+                x:Name="LoginNameEntry">
                 <Entry.Behaviors>
                     <behaviors:EmailValidationBehavior
                         Flags="ValidateOnValueChanged"
-                        InvalidStyle="{StaticResource InvalidUserName}"
-                        ValidStyle="{StaticResource ValidUserName}" />
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        ValidStyle="{StaticResource ValidEntryStyle}" />
                 </Entry.Behaviors>
             </Entry>
             <Label
@@ -105,14 +104,7 @@
                 Command="{Binding DoLoginCommand}"
                 Grid.Column="0"
                 Grid.Row="2"
-                Style="{StaticResource LoginButton}"
-                Text="Submit" />
-            <Button
-                Command="{Binding DoCreateAccountCommand}"
-                Grid.Column="1"
-                Grid.Row="2"
-                Style="{StaticResource LoginButton}"
-                Text="Create Account">
+                Text="Submit">
                 <Button.Triggers>
                     <DataTrigger
                         Binding="{Binding Source={x:Reference passwordEntry}, Path=Text.Length}"
@@ -123,11 +115,15 @@
                 </Button.Triggers>
             </Button>
             <Button
+                Command="{Binding DoCreateAccountCommand}"
+                Grid.Column="1"
+                Grid.Row="2"
+                Text="Create Account" />
+            <Button
                 BackgroundColor="LightGray"
                 Command="{Binding ForgotPasswordCommand}"
                 Grid.Column="2"
                 Grid.Row="2"
-                Style="{StaticResource LoginButton}"
                 Text="Forgot Password" />
         </Grid>
         <ActivityIndicator

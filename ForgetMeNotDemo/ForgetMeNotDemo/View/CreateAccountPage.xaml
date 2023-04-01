@@ -64,5 +64,6 @@
             TextColor="Black"
             TextTransform="None"
             WidthRequest="100" />
+        <ActivityIndicator IsRunning="{Binding CreateAccountIsRunning}"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -26,10 +26,8 @@
                 Grid.Row="1"
                 RadioButtonGroup.GroupName="{Binding ThemeGroupName}"
                 RadioButtonGroup.SelectedValue="{Binding ThemeSelection}">
-                <RadioButton Content="Dark" />
-                <RadioButton
-                    Content="Light"
-                    IsChecked="True" />
+                <RadioButton Content="Dark" Value="Dark" />
+                <RadioButton Content="Light" Value="Light"/>
             </HorizontalStackLayout>
             <Label
                 Grid.Column="0"

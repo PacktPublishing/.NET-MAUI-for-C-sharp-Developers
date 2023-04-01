@@ -35,7 +35,7 @@
                 x:Name="BigFlower">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer
-                        Command="{Binding ImageTappedCommand}"
+                        Command="{Binding GoToLoginCommand}"
                         NumberOfTapsRequired="2" />
                 </Image.GestureRecognizers>
             </Image>

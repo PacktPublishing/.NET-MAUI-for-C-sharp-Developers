@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    Title="About"
     x:Class="ForgetMeNotDemo.View.AboutPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <VerticalStackLayout
-        Margin="10"
-        Spacing="10">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="About">
+    <VerticalStackLayout Margin="10" Spacing="10">
         <HorizontalStackLayout Spacing="10">
             <Label
                 FontAttributes="Bold"
@@ -31,21 +30,30 @@
                 VerticalOptions="End" />
         </HorizontalStackLayout>
 
-        <Label
-            HeightRequest="60"
-            Text="This app is written in XAML and C# with .NET MAUI by Jesse Liberty and Rodrigo Juarez."
-            VerticalTextAlignment="Center" />
-        <Label
-            HeightRequest="60"
-            Text="Concept and original design by Robin Liberty"
-            VerticalTextAlignment="Center" />
-        <Label
-            FontSize="Small"
-            Text="Icons from IconScout: https://iconscout.com/licenses#simple_license" />
-        
+        <toolkit:Expander>
+            <toolkit:Expander.Header>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Credits" />
+            </toolkit:Expander.Header>
+            <VerticalStackLayout>
+                <Label
+                    HeightRequest="60"
+                    Text="This app is written in XAML and C# with .NET MAUI by Jesse Liberty and Rodrigo Juarez."
+                    VerticalTextAlignment="Center" />
+                <Label
+                    HeightRequest="60"
+                    Text="Concept and original design by Robin Liberty"
+                    VerticalTextAlignment="Center" />
+                <Label FontSize="Small" Text="Icons from IconScout: https://iconscout.com/licenses#simple_license" />
+            </VerticalStackLayout>
+        </toolkit:Expander>
+
+
         <Button
-            Command="{Binding OpenPreferencesCommand}"
             Margin="10,50,10,0"
+            Command="{Binding OpenPreferencesCommand}"
             Text="Preferences"
             WidthRequest="150" />
     </VerticalStackLayout>
