@@ -47,6 +47,19 @@ With the following software and hardware list you can run all code files present
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://packt.link/z75ye).
 
+## Errata
+
+Page 31: The technical requirement section requires the .NET MAUI Community Toolkit be added as a NuGet package.
+
+Page 36(line 11):You should use chain UseMauiCommunityToolkitMarkup to UseMauiCommunityToolkit in the builder [1]."
+There is no bracketed 1, i.e. [1], in the code section directly preceding this sentence.
+
+Page 36(line 18):new Entry().Size(400,40); it should be 400 instead of 200
+
+Page 39: Setting up MVMM should be Setting up MVVM
+
+
+
 ### Related products
 * High-Performance Programming in C# and .NET  [[Packt]](https://www.packtpub.com/product/high-performance-programming-in-c-and-net/9781800564718?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1800564716)
 
