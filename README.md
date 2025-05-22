@@ -60,11 +60,11 @@ Page 39: Setting up MVMM should be Setting up MVVM
 
 Page 11: Chapter 1 - The sentence,**"Right now, let’s open this out of the box project."** is incorrect. It _should be_ **"Right now, let’s open MauiProgram.cs"**
 
-Page 47: Chapter 4- The sentence, “Add an attribute above the [ObservableObject] class declaration like this:” is incorrect. It should be "Add the [ObservableObject] attribute above the MainViewModel class declaration like this”
+Page 47: Chapter 4- The sentence, **“Add an attribute above the [ObservableObject] class declaration like this:”** is incorrect. It _should be_ **"Add the [ObservableObject] attribute above the MainViewModel class declaration like this”**
 
-Page 59: Chapter 4- Minor correction: All occurrences of GestureRecognizer should be GestureRecognizers
+Page 59: Chapter 4- All occurrences of **GestureRecognizer** _should be_ **GestureRecognizers**
 
-Page 76: Chapter 4 - The sentence, "To keep things clean, remove the Editor and its associated Label from LoginPage.xaml and remove the constructor and ICommand from ViewModel. is incorrect. It should be "To keep things clean, remove the Editor and its associated Label from LoginPage.xaml.
+Page 76: Chapter 4 - The sentence, **"To keep things clean, remove the Editor and its associated Label from LoginPage.xaml and remove the constructor and ICommand from ViewModel** is incorrect. It _should be_ **"To keep things clean, remove the Editor and its associated Label from LoginPage.xaml.**
 
 
 ### Related products
