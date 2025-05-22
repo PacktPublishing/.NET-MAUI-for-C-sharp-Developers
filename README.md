@@ -58,7 +58,13 @@ Page 36(line 18):new Entry().Size(400,40); it should be 400 instead of 200
 
 Page 39: Setting up MVMM should be Setting up MVVM
 
+Page 11 : Chapter 1 - The sentence,**"Right now, let’s open this out of the box project."** is incorrect. It _should be_ **""Right now, let’s open MauiProgram.cs"**
 
+Page 47: Chapter 4- The sentence, **“Add an attribute above the [ObservableObject] class declaration like this:”** is incorrect. It _should be_ **"Add the [ObservableObject] attribute above the MainViewModel class declaration like this”**
+
+Page 59 : Chapter 4- All occurrences of **GestureRecognizer** _should be_ **GestureRecognizers**
+
+Page 76 : Chapter 4 - The sentence, **"To keep things clean, remove the Editor and its associated Label from LoginPage.xaml and remove the constructor and ICommand from ViewModel."** is incorrect. It _should be_ **"To keep things clean, remove the Editor and its associated Label from LoginPage.xaml."**
 
 ### Related products
 * High-Performance Programming in C# and .NET  [[Packt]](https://www.packtpub.com/product/high-performance-programming-in-c-and-net/9781800564718?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1800564716)
